@@ -12,12 +12,12 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Home', path: '#home' },
-    { name: 'About Us', path: '#about' },
-    { name: 'Events', path: '#events' },
-    { name: 'Resources', path: '#resources' },
-    { name: 'Gallery', path: '#gallery' },
-    { name: 'Team', path: '#team' },
+    { name: 'Home', path: '/#home' },
+    { name: 'About Us', path: '/#about' },
+    { name: 'Events', path: '/#events' },
+    { name: 'Resources', path: '/#resources' },
+    { name: 'Gallery', path: '/#gallery' },
+    { name: 'Team', path: '/team' },
   ];
 
   return (
