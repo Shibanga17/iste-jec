@@ -17,8 +17,9 @@ export default function BranchSelection() {
       <div className="max-w-6xl mx-auto">
         
         <div className="mb-12">
-          <Link href="/resources" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 font-medium">
-            <ArrowLeft size={20} /> Back to Vault
+          {/* CHANGED LINK HERE: It now points to /#resources instead of /resources */}
+          <Link href="/#resources" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 font-medium">
+            <ArrowLeft size={20} /> Back to Homepage
           </Link>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">Select Your Branch</h1>
           <p className="text-lg text-slate-400 max-w-2xl">Choose your discipline to access curated semester-wise study materials.</p>
