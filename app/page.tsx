@@ -101,6 +101,7 @@ import {
 import Navbar from './components/navbar';
 import NotificationTicker from './components/NotificationTicker';
 import PCBBackground from './components/PCBBackground';
+import AnnouncementBanner from './components/AnnouncementBanner'; // <-- Added Banner Import
 import { db } from '../lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 
@@ -150,6 +151,11 @@ export default function Home() {
         <PCBBackground />
       </div>
 
+      {/* --- ANNOUNCEMENT BANNER --- */}
+      <div className="absolute top-[72px] w-full z-40">
+        <AnnouncementBanner />
+      </div>
+
       {/* ================= HOME SECTION ================= */}
       <section id="home" className="relative z-10 pt-40 pb-16 px-6 max-w-4xl mx-auto text-center flex flex-col items-center min-h-[90vh] justify-center">
         <div className="absolute top-32 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-[-1]"></div>
@@ -159,7 +165,7 @@ export default function Home() {
         </motion.div>
 
         <motion.h2 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 0.9, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-sm md:text-base font-semibold tracking-[0.2em] text-cyan-400 uppercase mb-6">
-          INDIAN SOCIETY FOR TECHNICAL EDUCATION, JEC STUDENTS CHAPTER
+          INDIAN SOCIETY FOR TECHNICAL EDUCATION JEC STUDENTS CHAPTER
         </motion.h2>
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-6xl md:text-8xl font-black tracking-tight mb-8">
@@ -380,7 +386,7 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">Building in Stealth Mode</h2>
             <p className="text-slate-400 max-w-md mx-auto mb-10 relative z-10">There are no active projects on display at the moment. Our teams are currently brainstorming, coding, and soldering behind the scenes. Check back soon!</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full relative z-10">
-               <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center hover:border-cyan-500/50 transition-colors"><Cpu size={28} className="text-cyan-400 mb-3"/><span className="text-sm text-slate-300 font-semibold tracking-wide uppercase">Hardware</span></div>
+               <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center hover:border-cyan-500/50 transition-colors"><Cpu size={28} className="text-cyan-400 mb-3"/><span className="text-sm text-slate-300 font-semibold tracking-wide uppercase">Hardware & IoT</span></div>
                <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center hover:border-orange-500/50 transition-colors"><Hammer size={28} className="text-orange-400 mb-3"/><span className="text-sm text-slate-300 font-semibold tracking-wide uppercase">Prototyping</span></div>
                <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center hover:border-purple-500/50 transition-colors"><Rocket size={28} className="text-purple-400 mb-3"/><span className="text-sm text-slate-300 font-semibold tracking-wide uppercase">App Dev</span></div>
             </div>
