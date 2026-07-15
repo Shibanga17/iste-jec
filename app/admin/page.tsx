@@ -19,7 +19,7 @@ const subjectsMap: Record<string, string[]> = {
     'Theory Of Computation (TOC / FLAT)', 'Microcontrollers and Applications', 'Compiler Design', 
     'Computer Network', 'Software Engineering', 'Data Mining', 'Image Processing'
   ],
-  'ECE': ['Analog Electronics', 'Digital Logic', 'Signals and Systems', 'Microprocessors'],
+  
   'EE': [
     'Network Theory', 'Analog Electronics', 'Electrical Machines - I', 'Electromagnetic Fields', 'Digital Electronics', 
     'Electrical Machines - II', 'Power Systems - I', 'Electrical & Electronic Measurements', 'Power Systems - II', 
@@ -32,7 +32,28 @@ const subjectsMap: Record<string, string[]> = {
     'Industrial Instrumentation - II', 'Analytical Instrumentation', 'Optoelectronics', 'Process Control', 
     'Biomedical Instrumentation', 'Digital Signal Processing', 'Distributed Control Systems (DCS)', 'Virtual Instrumentation'
   ],
-  'ME': ['Thermodynamics', 'Fluid Mechanics', 'Machine Design'],
+  'ME': [
+    'Electrical Technology', 
+    'Basic Thermodynamics', 
+    'Theory of Machines', 
+    'Applied Electronics', 
+    'Workshop Theory and Practice-I', 
+    'Fluid Mechanics-I', 
+    'Materials Science A', 
+    'Mechanics of Materials', 
+    'Applied Thermodynamics - I', 
+    'Machine Design - I', 
+    'Mechanisms and Dynamics of Machines', 
+    'Heat Transfer - I', 
+    'Engineering Inspection and Metrology', 
+    'Mechanical Measurements and Instrumentation', 
+    'Accountancy', 
+    'Workshop Theory and Practice-II', 
+    'Heat Transfer-II', 
+    'Machine Design-II', 
+    'Fluid Mechanics-II'
+  ],
+  
   'Civil': [
     'Surveying & Geomatics', 'Solid Mechanics', 'Building Materials & Construction', 'Engineering Geology', 'Fluid Mechanics', 
     'Structural Analysis - I', 'Geotechnical Engineering - I', 'Environmental Engineering - I', 'Concrete Technology', 
