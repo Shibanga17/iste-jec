@@ -104,6 +104,7 @@ import PCBBackground from './components/PCBBackground';
 import AnnouncementBanner from './components/AnnouncementBanner'; // <-- Added Banner Import
 import { db } from '../lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
   // --- STATE FOR EVENTS ---
@@ -112,6 +113,8 @@ export default function Home() {
 
   // --- STATE FOR GALLERY (Tap to reveal on mobile) ---
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
+  // --- NEW STATE FOR FULLSCREEN IMAGE ---
+  const [selectedImage, setSelectedImage] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchEvents = async () => {

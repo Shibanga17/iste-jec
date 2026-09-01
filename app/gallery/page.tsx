@@ -1,11 +1,15 @@
 "use client";
 
+import { useState } from 'react'; // <-- Added useState
 import Navbar from '../components/navbar';
 import Image from 'next/image';
-import { Camera, Sparkles, Calendar } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Camera, Sparkles, Calendar, X } from 'lucide-react'; // <-- Added X icon
+import { motion, AnimatePresence } from 'framer-motion'; // <-- Added AnimatePresence
 
 export default function GalleryPage() {
+  // --- STATE FOR FULLSCREEN IMAGE ---
+  const [selectedImage, setSelectedImage] = useState<any | null>(null);
+
   const galleryItems = [
     { id: 1, title: "BOT MAKING WORKSHOP", category: "workshop", date: "March 2026", src: "/btmaking8.jpeg" },
     { id: 2, title: "BOT MAKING WORKSHOP", category: "workshop", date: "February 2026", src: "/btmaking4.jpeg" },
@@ -47,7 +51,7 @@ export default function GalleryPage() {
           </p>
         </motion.div>
 
-        {/* Masonry-Style Image Grid with Staggered Scroll Animations */}
+        {/* Masonry-Style Image Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((item, index) => (
             <motion.div 
@@ -55,7 +59,8 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.15 }} // Creates a staggered 1-2-3 left-to-right effect
+              transition={{ duration: 0.6, delay: (index % 3) * 0.15 }} 
+              onClick={() => setSelectedImage(item)} // <-- Added onClick event
               className="group relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 cursor-pointer"
             >
               {item.src ? (
@@ -88,6 +93,55 @@ export default function GalleryPage() {
           ))}
         </div>
       </div>
+
+      {/* ================= IMAGE LIGHTBOX MODAL ================= */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#040814]/90 backdrop-blur-md p-4 sm:p-8"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-slate-800/50 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition-colors z-[110]"
+            >
+              <X size={24} />
+            </button>
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()} // Prevents clicking the image from closing the modal
+              className="relative w-full max-w-5xl max-h-[85vh] aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.2)] border border-slate-700 bg-slate-900 flex flex-col"
+            >
+              <div className="relative flex-1 w-full h-full">
+                <Image 
+                  src={selectedImage.src} 
+                  alt={selectedImage.title} 
+                  fill 
+                  className="object-contain" 
+                />
+              </div>
+              
+              <div className="bg-[#0b1021] p-4 border-t border-slate-800 flex justify-between items-center shrink-0">
+                <div>
+                  <h3 className="text-xl font-bold text-white">{selectedImage.title}</h3>
+                  <p className="text-slate-400 text-sm">{selectedImage.date}</p>
+                </div>
+                <span className="px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/20 text-xs font-bold rounded-lg uppercase">
+                  {selectedImage.category}
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </main>
   );
 }
