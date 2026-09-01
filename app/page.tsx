@@ -1,107 +1,17 @@
-// "use client";
-
-// import Navbar from './components/navbar';
-// import NotificationTicker from './components/NotificationTicker';
-// import PCBBackground from './components/PCBBackground';
-// import { ArrowRight } from 'lucide-react';
-// import Link from 'next/link';
-// import { motion } from 'framer-motion';
-
-// export default function Home() {
-//   return (
-//     <main className="min-h-screen bg-[#040814] text-white overflow-hidden relative">
-      
-//       <Navbar />
-      
-//       {/* 1. The Animated Hardware Traces */}
-//       <PCBBackground />
-
-//       {/* 2. Subtle Background Glows */}
-//       <div className="absolute top-32 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-//       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-//       <div className="relative z-10 pt-24 pb-16 px-6 max-w-4xl mx-auto text-center flex flex-col items-center">
-        
-//         {/* Ticker Animation */}
-//         <motion.div 
-//           initial={{ opacity: 0, y: -20 }} 
-//           animate={{ opacity: 1, y: 0 }} 
-//           transition={{ duration: 0.6, delay: 0.1 }}
-//           className="mb-10"
-//         >
-//           <NotificationTicker />
-//         </motion.div>
-
-//         {/* Subtitle Animation */}
-//         <motion.h2 
-//           initial={{ opacity: 0, scale: 0.9 }} 
-//           animate={{ opacity: 0.9, scale: 1 }} 
-//           transition={{ duration: 0.6, delay: 0.2 }}
-//           className="text-sm md:text-base font-semibold tracking-[0.2em] text-cyan-400 uppercase mb-6"
-//         >
-//           INDIAN SOCIETY FOR TECHNICAL EDUCATION JEC STUDENTS CHAPTER
-//         </motion.h2>
-
-//         {/* Main Title Animation */}
-//         <motion.h1 
-//           initial={{ opacity: 0, y: 30 }} 
-//           animate={{ opacity: 1, y: 0 }} 
-//           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-//           className="text-6xl md:text-8xl font-black tracking-tight mb-8"
-//         >
-//           Build the Future<br />
-//           at <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">JEC.</span>
-//         </motion.h1>
-        
-//         {/* Paragraph Animation */}
-//         <motion.p 
-//           initial={{ opacity: 0, y: 20 }} 
-//           animate={{ opacity: 1, y: 0 }} 
-//           transition={{ duration: 0.8, delay: 0.5 }}
-//           className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed"
-//         >
-//           The official ISTE Student Chapter. We don't just talk about technology; we
-//           build it. Join a community of developers, designers, and innovators.
-//         </motion.p>
-        
-//         {/* Buttons Animation */}
-//         <motion.div 
-//           initial={{ opacity: 0, y: 20 }} 
-//           animate={{ opacity: 1, y: 0 }} 
-//           transition={{ duration: 0.8, delay: 0.7 }}
-//           className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto"
-//         >
-//           <Link href="/community" className="flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)]">
-//             Join the Community <ArrowRight size={18} />
-//           </Link>
-          
-//           <Link href="/projects" className="flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all">
-//             Explore Live Projects
-//           </Link>
-//         </motion.div>
-
-//       </div>
-//     </main>
-//   );
-// }
-
-
-
 "use client";
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { 
   ArrowRight, Target, Lightbulb, Rocket, Users, Cpu, Code, Sparkles, 
   Mail, Calendar, MapPin, Clock, Camera, FolderGit2, Hammer, ArrowUpRight,
-  BookOpen, Lock, Trophy
+  BookOpen, Lock, Trophy, X
 } from 'lucide-react';
 import Navbar from './components/navbar';
 import NotificationTicker from './components/NotificationTicker';
 import PCBBackground from './components/PCBBackground';
-import AnnouncementBanner from './components/AnnouncementBanner'; // <-- Added Banner Import
+import AnnouncementBanner from './components/AnnouncementBanner';
 import { db } from '../lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -111,9 +21,7 @@ export default function Home() {
   const [events, setEvents] = useState<any[]>([]);
   const [loadingEvents, setLoadingEvents] = useState(true);
 
-  // --- STATE FOR GALLERY (Tap to reveal on mobile) ---
-  const [activeGallery, setActiveGallery] = useState<number | null>(null);
-  // --- NEW STATE FOR FULLSCREEN IMAGE ---
+  // --- STATE FOR FULLSCREEN IMAGE ---
   const [selectedImage, setSelectedImage] = useState<any | null>(null);
 
   useEffect(() => {
@@ -345,24 +253,24 @@ export default function Home() {
               viewport={{ once: true, margin: "-50px" }} 
               transition={{ duration: 0.6, delay: (index % 3) * 0.15 }} 
               className="group relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 cursor-pointer"
-              onClick={() => setActiveGallery(activeGallery === item.id ? null : item.id)}
+              onClick={() => setSelectedImage(item)}
             >
               {item.src ? (
                 <Image 
                   src={item.src} 
                   alt={item.title} 
                   fill 
-                  className={`object-cover transition-transform duration-700 ease-in-out ${activeGallery === item.id ? 'scale-110' : 'group-hover:scale-110'}`} 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" 
                 />
               ) : (
-                <div className={`absolute inset-0 flex flex-col items-center justify-center transition-colors duration-500 ${activeGallery === item.id ? 'text-blue-500/30' : 'text-slate-700 group-hover:text-blue-500/30'}`}>
+                <div className="absolute inset-0 flex flex-col items-center justify-center transition-colors duration-500 text-slate-700 group-hover:text-blue-500/30">
                   <Camera size={48} strokeWidth={1.5} className="mb-3" />
                   <span className="text-sm font-medium tracking-widest uppercase opacity-50">Image Missing</span>
                 </div>
               )}
               
-              <div className={`absolute inset-0 bg-gradient-to-t from-[#040814] via-[#040814]/50 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 ${activeGallery === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                <div className={`transition-transform duration-300 ${activeGallery === item.id ? 'translate-y-0' : 'transform translate-y-6 group-hover:translate-y-0'}`}>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#040814] via-[#040814]/50 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                <div className="transition-transform duration-300 transform translate-y-6 group-hover:translate-y-0">
                   <span className="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/20 text-xs font-bold rounded-lg mb-3">{item.category}</span>
                   <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
                   <div className="flex items-center text-slate-300 text-sm gap-2"><Calendar size={14} className="text-cyan-400" />{item.date}</div>
@@ -426,6 +334,54 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ================= IMAGE LIGHTBOX MODAL ================= */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#040814]/90 backdrop-blur-md p-4 sm:p-8"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-slate-800/50 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition-colors z-[110]"
+            >
+              <X size={24} />
+            </button>
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()} 
+              className="relative w-full max-w-5xl max-h-[85vh] aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.2)] border border-slate-700 bg-slate-900 flex flex-col"
+            >
+              <div className="relative flex-1 w-full h-full">
+                <Image 
+                  src={selectedImage.src} 
+                  alt={selectedImage.title} 
+                  fill 
+                  className="object-contain" 
+                />
+              </div>
+              
+              <div className="bg-[#0b1021] p-4 border-t border-slate-800 flex justify-between items-center shrink-0">
+                <div>
+                  <h3 className="text-xl font-bold text-white">{selectedImage.title}</h3>
+                  <p className="text-slate-400 text-sm">{selectedImage.date}</p>
+                </div>
+                <span className="px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/20 text-xs font-bold rounded-lg uppercase">
+                  {selectedImage.category}
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );

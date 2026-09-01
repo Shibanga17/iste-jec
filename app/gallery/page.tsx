@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react'; // <-- Added useState
+import { useState } from 'react';
 import Navbar from '../components/navbar';
 import Image from 'next/image';
-import { Camera, Sparkles, Calendar, X } from 'lucide-react'; // <-- Added X icon
-import { motion, AnimatePresence } from 'framer-motion'; // <-- Added AnimatePresence
+import { Camera, Sparkles, Calendar, X } from 'lucide-react'; 
+import { motion, AnimatePresence } from 'framer-motion'; 
 
 export default function GalleryPage() {
   // --- STATE FOR FULLSCREEN IMAGE ---
@@ -60,7 +60,7 @@ export default function GalleryPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: (index % 3) * 0.15 }} 
-              onClick={() => setSelectedImage(item)} // <-- Added onClick event
+              onClick={() => setSelectedImage(item)}
               className="group relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 cursor-pointer"
             >
               {item.src ? (
@@ -116,7 +116,7 @@ export default function GalleryPage() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()} // Prevents clicking the image from closing the modal
+              onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-5xl max-h-[85vh] aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.2)] border border-slate-700 bg-slate-900 flex flex-col"
             >
               <div className="relative flex-1 w-full h-full">
