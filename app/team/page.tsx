@@ -233,7 +233,7 @@ export default function TeamPage() {
       name: "Deepshikha Gogoi",
       designation: "",
       year: "3rd Year",
-      branch: "Branch Name Here",
+      branch: "Electrical Engineering",
       image: "/deepshikha.png",
     },
     {
@@ -241,7 +241,7 @@ export default function TeamPage() {
       name: "Ripanshi Kumari",
       designation: "",
       year: "3rd Year",
-      branch: "Branch Name Here",
+      branch: "Mechanical Engineering",
       image: "/ripanshi.jpeg",
     },
     {
@@ -249,7 +249,7 @@ export default function TeamPage() {
       name: "Dipshika Rai",
       designation: "",
       year: "3rd Year",
-      branch: "Branch Name Here",
+      branch: "Mechanical Engineering",
       image: "/dipshika_rai.png",
     }
   ];
