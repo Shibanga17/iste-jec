@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"; // <-- 1. IMPORT ADDED HERE
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,13 +13,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ISTE JEC - Tech Society of Jorhat Engineering College",
     description: "Join the premier technical society of JEC. Explore workshops, hackathons, and a community of innovators.",
-    url: "https://yourwebsite.com", // <-- Update this later when you get your real domain!
+    url: "https://iste-jec.vercel.app", 
     siteName: "ISTE JEC",
     images: [
       {
-        url: "/og-image.jpg", // We will add this image in Step 2!
-        width: 1200,
-        height: 630,
+        url: "/iste-logo.jpeg", 
+        width: 800,
+        height: 800,
         alt: "ISTE JEC Cover Image",
       },
     ],
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ISTE JEC | Tech Society",
     description: "The official ISTE Students' Chapter at Jorhat Engineering College.",
-    images: ["iste-logo.jpg"],
+    images: ["/iste-logo.jpeg"], 
   },
 };
 
@@ -39,8 +40,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="scroll-smooth"> 
+      <body className={inter.className}>
+        {children}
+        <Analytics /> {/* <-- 2. COMPONENT ADDED HERE! */}
+      </body>
     </html>
   );
 }
