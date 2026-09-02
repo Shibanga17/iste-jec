@@ -62,7 +62,20 @@ const subjectsMap: Record<string, string[]> = {
     'Estimation, Costing & Valuation', 'Construction Planning & Management', 'Irrigation Engineering'
   ],
   'Economics / Open Elective': ['Microeconomics', 'Public Finance', 'Environmental Economics'],
-  'First Year': ['Engineering Physics', 'Engineering Chemistry', 'Engineering Math', 'Basic Electrical']
+  "First Year": [
+    "Engineering Mathematics I",
+    "Engineering Mathematics II",
+    "Physics",
+    "Chemistry",
+    "Basics of Electrical Engineering",
+    "Technical Report Writing",
+    "Workshop",
+    "Design Thinking",
+    "Biology for Engineers",
+    "Programming for Problem Solving",
+    "Engineering Mechanics",
+    "Universal Human Value"
+  ],
 };
 
 export default function AdminDashboard() {
