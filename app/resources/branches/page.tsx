@@ -4,12 +4,13 @@ import Link from 'next/link';
 export default function BranchSelection() {
   
   const branches = [
+    { id: '1st_year', name: '1st Year', fullName: '!st Year Notes', icon: Terminal, accentColor: 'text-violet-400', bgColor: 'bg-violet-500/10', borderColor: 'hover:border-violet-500/50' },
     { id: 'cse', name: 'Computer Science', fullName: 'Computer Science & Engg.', icon: Monitor, accentColor: 'text-blue-400', bgColor: 'bg-blue-500/10', borderColor: 'hover:border-blue-500/50' },
     { id: 'me', name: 'Mechanical', fullName: 'Mechanical Engineering', icon: Settings, accentColor: 'text-orange-400', bgColor: 'bg-orange-500/10', borderColor: 'hover:border-orange-500/50' },
     { id: 'ce', name: 'Civil', fullName: 'Civil Engineering', icon: Building2, accentColor: 'text-amber-400', bgColor: 'bg-amber-500/10', borderColor: 'hover:border-amber-500/50' },
     { id: 'ee', name: 'Electrical', fullName: 'Electrical Engineering', icon: Zap, accentColor: 'text-yellow-400', bgColor: 'bg-yellow-500/10', borderColor: 'hover:border-yellow-500/50' },
     { id: 'ie', name: 'Instrumentation', fullName: 'Instrumentation Engg.', icon: Gauge, accentColor: 'text-emerald-400', bgColor: 'bg-emerald-500/10', borderColor: 'hover:border-emerald-500/50' },
-    { id: 'mca', name: 'MCA', fullName: 'Master of Computer App.', icon: Terminal, accentColor: 'text-violet-400', bgColor: 'bg-violet-500/10', borderColor: 'hover:border-violet-500/50' },
+    
   ];
 
   return (
