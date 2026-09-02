@@ -126,7 +126,7 @@ const subjectDatabase: Record<string, { branchName: string, subjects: any[] }> =
    "1st_year": {
       branchName: "1st Year Notes",
       subjects: [
-        { id: 'Maths1', name: 'Engineering Mathematics I', semester: '2nd Semester' },
+        { id: 'Maths1', name: 'Engineering Mathematics I', semester: '1st Semester' },
         { id: 'Maths2', name: 'Engineering Mathematics II', semester: '2nd Semester' },
         { id: 'Phy', name: 'Physics', semester: '1st & 2nd Semester' },
         { id: 'chem', name: 'Chemistry', semester: '1st & 2nd Semester' },
