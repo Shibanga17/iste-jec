@@ -123,21 +123,26 @@ const subjectDatabase: Record<string, { branchName: string, subjects: any[] }> =
       { id: 'vi', name: 'Virtual Instrumentation', code: 'IE602', semester: '7th Semester' }
     ] 
   },
-  mca: {
-    branchName: "Master of Computer Applications",
-    subjects: [
-      { id: 'dsa-mca', name: 'Data Structures & Algo', code: 'MCA101', semester: '1st Semester' },
-      { id: 'java-mca', name: 'Advanced Java', code: 'MCA102', semester: '1st Semester' },
-      { id: 'os-mca', name: 'Operating Systems', code: 'MCA103', semester: '1st Semester' },
-      { id: 'dbms-mca', name: 'Database Management Systems', code: 'MCA104', semester: '1st Semester' },
-      { id: 'se-mca', name: 'Software Engineering', code: 'MCA201', semester: '2nd Semester' },
-      { id: 'wt-mca', name: 'Web Technologies', code: 'MCA202', semester: '2nd Semester' },
-      { id: 'cn-mca', name: 'Computer Networks', code: 'MCA203', semester: '2nd Semester' },
-      { id: 'ai-mca', name: 'Artificial Intelligence', code: 'MCA301', semester: '3rd Semester' }
-    ]
-  }
+   "1st_year": {
+      branchName: "1st Year Notes",
+      subjects: [
+        { id: 'Maths1', name: 'Engineering Mathematics I', semester: '2nd Semester' },
+        { id: 'Maths2', name: 'Engineering Mathematics II', semester: '2nd Semester' },
+        { id: 'Phy', name: 'Physics', semester: '1st & 2nd Semester' },
+        { id: 'chem', name: 'Chemistry', semester: '1st & 2nd Semester' },
+        { id: 'bee', name: 'Basics of Electrical Engineering', semester: '1st & 2nd Semester' },
+        { id: 'TRW', name: 'Technical Report Writing', semester: '1st & 2nd Semester' },
+        { id: 'Workshop', name: 'Workshop', semester: '1st & 2nd Semsterr' },
+        { id: 'DT', name: 'Design Thinking', semester: '1st & 2nd Semester' },
+        { id: 'Bio', name: 'Biology for Engineers', semester: '1st & 2nd Semester' },
+        { id: 'pspc', name: 'Programming for Problem Solving', semester: '1st & 2nd Semester' },
+        { id: 'Em', name: 'Engineering Mechanics', semester: '1st & 2nd Semester' },
+        { id: 'UHV', name: 'Universal Human Value', semester: '1st & 2nd Semester' },
+      ]
+    }
 };
 
+// Map URL parameter to Admin Panel dropdown strings
 // Map URL parameter to Admin Panel dropdown strings
 const branchParamToNameMap: Record<string, string> = {
   'cse': 'CSE',
@@ -145,7 +150,8 @@ const branchParamToNameMap: Record<string, string> = {
   'ee': 'EE',
   'me': 'ME',
   'ce': 'Civil',
-  'mca': 'Economics / Open Elective', // Update this mapping if needed in admin
+  'ie': 'Instrumentation Engineering', 
+  '1st_year': '1st Year Notes', 
 };
 
 export default function SubjectPage({ params }: { params: Promise<{ branch: string }> }) {
