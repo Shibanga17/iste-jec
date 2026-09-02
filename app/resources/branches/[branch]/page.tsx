@@ -151,7 +151,7 @@ const branchParamToNameMap: Record<string, string> = {
   'me': 'ME',
   'ce': 'Civil',
   'ie': 'Instrumentation Engineering', 
-  '1st_year': '1st Year Notes', 
+  '1st_year': 'First Year', 
 };
 
 export default function SubjectPage({ params }: { params: Promise<{ branch: string }> }) {
