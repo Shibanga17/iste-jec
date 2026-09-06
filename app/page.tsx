@@ -343,13 +343,13 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#040814]/90 backdrop-blur-md p-4 sm:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#040814]/95 backdrop-blur-sm p-4 sm:p-8"
           >
             <button 
               onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-slate-800/50 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition-colors z-[110]"
+              className="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-slate-800/80 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition-colors z-[110]"
             >
-              <X size={24} />
+              <X size={20} className="md:w-6 md:h-6" />
             </button>
             
             <motion.div
@@ -358,9 +358,10 @@ export default function Home() {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()} 
-              className="relative w-full max-w-5xl max-h-[85vh] aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.2)] border border-slate-700 bg-slate-900 flex flex-col"
+              className="relative w-full max-w-5xl bg-slate-900 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.2)] border border-slate-700 flex flex-col max-h-[90vh]"
             >
-              <div className="relative flex-1 w-full h-full">
+              {/* Responsive Height: Taller on mobile, wide on desktop */}
+              <div className="relative w-full h-[55vh] md:h-[75vh] bg-black/40">
                 <Image 
                   src={selectedImage.src} 
                   alt={selectedImage.title} 
@@ -369,12 +370,13 @@ export default function Home() {
                 />
               </div>
               
-              <div className="bg-[#0b1021] p-4 border-t border-slate-800 flex justify-between items-center shrink-0">
+              {/* Mobile-optimized bottom bar */}
+              <div className="bg-[#0b1021] p-4 md:p-5 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0">
                 <div>
-                  <h3 className="text-xl font-bold text-white">{selectedImage.title}</h3>
-                  <p className="text-slate-400 text-sm">{selectedImage.date}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">{selectedImage.title}</h3>
+                  <p className="text-slate-400 text-xs md:text-sm">{selectedImage.date}</p>
                 </div>
-                <span className="px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/20 text-xs font-bold rounded-lg uppercase">
+                <span className="px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/20 text-[10px] md:text-xs font-bold rounded-lg uppercase tracking-wider">
                   {selectedImage.category}
                 </span>
               </div>
